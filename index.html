@@ -1,195 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="google-site-verification" content="WBoq5_J_wvpDrMkoF7DMi_p_zLkJQHwzG78KNwWty5o" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+import { Link } from "react-router-dom";
+import { ArrowRight, Search, CheckCircle2, BookOpen, Bell, ShieldCheck, Sparkles, Users, GraduationCap, IndianRupee, Globe } from "lucide-react";
+import { SiteLayout } from "@/components/layout/SiteLayout";
+import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
+import { ScholarshipCard } from "@/components/ScholarshipCard";
+import { scholarships } from "@/data/scholarships";
 
-<title>NSP Scholarship 2026 Apply Online, Last Date, Status Check</title>
+const Home = () => {
+  const featured = scholarships.filter((s) => s.highlight).slice(0, 3);
 
-<meta name="description" content="NSP Scholarship 2026 Apply Online, Eligibility, Last Date, Status Check, Documents, Benefits and Complete Details.">
+  return (
+    <SiteLayout>
+      <SEO
+        title="ScholarMate – NSP Scholarship Assistant 2026 for Indian Students"
+        description="Discover NSP scholarships you qualify for, check eligibility instantly, follow a step-by-step guide, and never miss a deadline. Built for Indian students, 2026."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "ScholarMate",
+          applicationCategory: "EducationalApplication",
+          operatingSystem: "Web",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+        }}
+      />
 
-<link rel="stylesheet" href="style.css">
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-mesh" />
+        <div className="container relative pt-12 pb-20 md:pt-20 md:pb-28">
+          <div className="mx-auto max-w-3xl text-center space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-4 py-1.5 text-xs font-medium animate-fade-up">
+              <span className="flex h-2 w-2 rounded-full bg-success animate-pulse" />
+              NSP 2026 applications now open • Deadlines extended for many schemes
+            </div>
+            <h1 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight text-balance animate-fade-up [animation-delay:60ms]">
+              Your scholarship journey,
+              <span className="block bg-gradient-to-r from-accent to-primary-glow bg-clip-text text-transparent">made simple.</span>
+            </h1>
+            <p className="mx-auto max-w-2xl text-base md:text-lg text-muted-foreground text-balance animate-fade-up [animation-delay:120ms]">
+              ScholarMate helps Indian students discover NSP scholarships, check eligibility in seconds, follow a clear step-by-step guide, and stay ahead of every deadline.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 animate-fade-up [animation-delay:180ms]">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/finder">Find my scholarships <ArrowRight className="h-4 w-4" /></Link>
+              </Button>
+              <Button variant="outline" size="xl" asChild>
+                <Link to="/guide">See the NSP Guide</Link>
+              </Button>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-6 text-xs text-muted-foreground animate-fade-up [animation-delay:240ms]">
+              <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-success" /> No NSP password ever</span>
+              <span className="flex items-center gap-1.5"><Globe className="h-4 w-4 text-primary" /> English • हिंदी • اردو</span>
+              <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-accent" /> Free for students</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-</head>
+      {/* BENTO FEATURES */}
+      <section className="container -mt-8 relative z-10">
+        <div className="grid gap-4 md:grid-cols-3 md:auto-rows-[180px]">
+          <Link to="/finder" className="group md:row-span-2 rounded-3xl bg-hero p-6 md:p-8 text-primary-foreground shadow-navy relative overflow-hidden">
+            <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-accent/20 blur-3xl group-hover:bg-accent/30 transition-colors" />
+            <div className="relative h-full flex flex-col">
+              <Search className="h-8 w-8 text-accent mb-4" />
+              <h3 className="font-display text-2xl font-bold mb-2">Scholarship Finder</h3>
+              <p className="text-sm opacity-80 mb-6">Tell us about you. We'll show every NSP scheme you qualify for, ranked by match.</p>
+              <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-accent group-hover:gap-2 transition-all">Open finder <ArrowRight className="h-4 w-4" /></span>
+            </div>
+          </Link>
 
-<body>
+          <Link to="/eligibility" className="group rounded-3xl border border-border bg-card-grad p-6 shadow-soft hover:shadow-elevated transition-all">
+            <CheckCircle2 className="h-7 w-7 text-success mb-3" />
+            <h3 className="font-display text-lg font-bold mb-1">Eligibility Checker</h3>
+            <p className="text-sm text-muted-foreground">Get a clear eligible / likely / not eligible answer with reasons.</p>
+          </Link>
 
-<header>
-<h1>NSP Scholarship 2026</h1>
-<p>Apply Online | Eligibility | Last Date | Status Check</p>
-</header>
+          <Link to="/guide" className="group rounded-3xl border border-border bg-card-grad p-6 shadow-soft hover:shadow-elevated transition-all">
+            <BookOpen className="h-7 w-7 text-primary mb-3" />
+            <h3 className="font-display text-lg font-bold mb-1">8-Step NSP Guide</h3>
+            <p className="text-sm text-muted-foreground">From OTR to payment — every step with checklists and common mistakes.</p>
+          </Link>
 
-<div class="container">
+          <Link to="/alerts" className="group rounded-3xl border border-border bg-accent-soft p-6 shadow-soft hover:shadow-elevated transition-all">
+            <Bell className="h-7 w-7 text-accent mb-3" />
+            <h3 className="font-display text-lg font-bold mb-1">Alerts Center</h3>
+            <p className="text-sm text-muted-foreground">Deadlines, extensions, payment cycles, renewal windows.</p>
+          </Link>
 
-<div class="card">
-<h2>🔔 NSP Scholarship 2026 Latest Update</h2>
+          <Link to="/faq" className="group rounded-3xl border border-border bg-card-grad p-6 shadow-soft hover:shadow-elevated transition-all">
+            <Sparkles className="h-7 w-7 text-primary-glow mb-3" />
+            <h3 className="font-display text-lg font-bold mb-1">FAQ & Knowledge</h3>
+            <p className="text-sm text-muted-foreground">Why payments fail, fixing rejections, OTR doubts — answered plainly.</p>
+          </Link>
+        </div>
+      </section>
 
-<img src="https://via.placeholder.com/800x400?text=NSP+Scholarship+2026" alt="NSP Scholarship 2026 Apply Online" width="100%">
+      {/* STATS */}
+      <section className="container py-16 md:py-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {[
+            { icon: GraduationCap, k: "100+", v: "NSP schemes tracked" },
+            { icon: IndianRupee, k: "₹2L+", v: "Max annual benefit" },
+            { icon: Users, k: "All", v: "States & UTs" },
+            { icon: ShieldCheck, k: "100%", v: "Free, no password" },
+          ].map(({ icon: Icon, k, v }) => (
+            <div key={k} className="rounded-2xl border border-border bg-card p-5 text-center">
+              <Icon className="h-6 w-6 mx-auto mb-2 text-accent" />
+              <div className="font-display text-2xl md:text-3xl font-bold">{k}</div>
+              <div className="text-xs text-muted-foreground mt-1">{v}</div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-<p>
-The NSP Scholarship 2026 is one of the most important scholarship programs launched by the Government of India to support students financially. Through the National Scholarship Portal, students from different categories can apply online and receive financial benefits directly in their bank accounts.
-</p>
+      {/* FEATURED SCHEMES */}
+      <section className="container py-12">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-2">Popular this season</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold">Scholarships students apply for most</h2>
+          </div>
+          <Button variant="ghost" asChild className="hidden md:flex">
+            <Link to="/finder">View all <ArrowRight className="h-4 w-4" /></Link>
+          </Button>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {featured.map((s) => <ScholarshipCard key={s.id} s={s} />)}
+        </div>
+      </section>
 
-<p>
-This scholarship is designed to reduce dropout rates and encourage students to continue their education. Whether you are in school, college, or pursuing higher education, NSP provides multiple schemes under one platform.
-</p>
+      {/* CTA */}
+      <section className="container py-16">
+        <div className="rounded-3xl bg-hero p-8 md:p-14 text-center text-primary-foreground relative overflow-hidden">
+          <div className="absolute inset-0 bg-mesh opacity-50" />
+          <div className="relative max-w-2xl mx-auto space-y-5">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-balance">Don't lose a scholarship to a small mistake.</h2>
+            <p className="opacity-80 text-balance">Get a personalized list of schemes, a clear application checklist, and reminders for every deadline.</p>
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/finder">Start now — it's free <ArrowRight className="h-4 w-4" /></Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+};
 
-</div>
-
-<div class="card">
-<h2>📊 NSP Scholarship 2026 Overview</h2>
-
-<table>
-<tr><th>Portal Name</th><td>National Scholarship Portal</td></tr>
-<tr><th>Year</th><td>2026</td></tr>
-<tr><th>Mode</th><td>Online</td></tr>
-<tr><th>Beneficiaries</th><td>Students Across India</td></tr>
-<tr><th>Official Website</th><td>scholarships.gov.in</td></tr>
-</table>
-
-</div>
-
-<div class="card">
-<h2>⚡ Quick Links</h2>
-<a class="btn" href="apply.html">Apply Online</a>
-<a class="btn" href="status.html">Check Status</a>
-<a class="btn" href="login.html">Login</a>
-<a class="btn" href="last-date.html">Last Date</a>
-<a class="btn" href="renewal.html">Renewal</a>
-</div>
-
-<div class="card">
-<h2>🎯 Eligibility Criteria</h2>
-
-<img src="https://via.placeholder.com/800x400?text=Eligibility+Criteria" alt="NSP Eligibility" width="100%">
-
-<p>
-To apply for NSP Scholarship 2026, students must meet certain eligibility conditions. These conditions vary depending on the scholarship scheme.
-</p>
-
-<ul>
-<li>Must be an Indian citizen</li>
-<li>Must be studying in a recognized institution</li>
-<li>Family income should be within the specified limit</li>
-<li>Must have valid documents</li>
-</ul>
-
-<p>
-Students from SC, ST, OBC, Minority, and General categories can apply depending on the scheme eligibility.
-</p>
-
-</div>
-
-<div class="card">
-<h2>📅 Important Dates</h2>
-
-<img src="https://via.placeholder.com/800x400?text=Important+Dates" alt="NSP Last Date" width="100%">
-
-<p>
-Students must be aware of important dates to avoid missing the application deadline.
-</p>
-
-<ul>
-<li>Start Date: July 2026 (Expected)</li>
-<li>Last Date: October 2026 (Expected)</li>
-<li>Verification: November 2026</li>
-<li>Payment Release: December 2026</li>
-</ul>
-
-</div>
-
-<div class="card">
-<h2>📝 How to Apply for NSP Scholarship 2026</h2>
-
-<img src="https://via.placeholder.com/800x400?text=Apply+Online" alt="NSP Apply Online" width="100%">
-
-<p>
-Applying for NSP Scholarship is simple and completely online. Follow the steps below:
-</p>
-
-<ol>
-<li>Visit the official portal</li>
-<li>Click on New Registration</li>
-<li>Fill personal details</li>
-<li>Upload documents</li>
-<li>Submit the application</li>
-</ol>
-
-<p>
-Make sure to verify all details before submission to avoid rejection.
-</p>
-
-</div>
-
-<div class="card">
-<h2>📂 Required Documents</h2>
-
-<img src="https://via.placeholder.com/800x400?text=Documents" alt="NSP Documents" width="100%">
-
-<ul>
-<li>Aadhaar Card</li>
-<li>Bank Passbook</li>
-<li>Income Certificate</li>
-<li>Caste Certificate</li>
-<li>Previous Marksheet</li>
-</ul>
-
-<p>
-These documents are necessary for verification and approval of your scholarship application.
-</p>
-
-</div>
-
-<div class="card">
-<h2>💰 Scholarship Amount</h2>
-
-<img src="https://via.placeholder.com/800x400?text=Scholarship+Amount" alt="NSP Amount" width="100%">
-
-<p>
-The scholarship amount depends on the scheme and level of education:
-</p>
-
-<ul>
-<li>Pre Matric: ₹1,000 – ₹5,000</li>
-<li>Post Matric: ₹5,000 – ₹20,000</li>
-<li>Higher Education: ₹20,000+</li>
-</ul>
-
-</div>
-
-<div class="card">
-<h2>🔍 NSP Scholarship Status Check</h2>
-
-<img src="https://via.placeholder.com/800x400?text=Check+Status" alt="NSP Status Check" width="100%">
-
-<p>
-Students can easily check their application status online by logging into the portal. It helps track application progress and payment updates.
-</p>
-
-<a class="btn" href="status.html">Check Status</a>
-
-</div>
-
-<div class="card">
-<h2>❓ FAQs</h2>
-
-<p><b>Q1. What is NSP Scholarship?</b><br>
-It is a government portal for scholarships.</p>
-
-<p><b>Q2. Who can apply?</b><br>
-Students meeting eligibility criteria.</p>
-
-<p><b>Q3. What is last date?</b><br>
-Expected October 2026.</p>
-
-</div>
-
-</div>
-
-<div class="footer">
-© 2026 NSP Scholarship | All Rights Reserved
-</div>
-
-</body>
-</html>
+export default Home;
